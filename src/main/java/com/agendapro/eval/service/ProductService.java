@@ -60,9 +60,9 @@ public class ProductService {
         .toList();
   }
 
-  public List<ProductDTO> getProductByName(String name) throws NotFoundException {
-    return StreamSupport.stream(repository.findByName(name)
-            .spliterator(), false)
+  public List<ProductDTO> getProductByName(String name) {
+    return repository.findByName(name)
+            .stream()
         .map(mapper::map)
         .toList();
   }
